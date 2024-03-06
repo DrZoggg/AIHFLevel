@@ -1,0 +1,217 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hf-ai-survival</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <style>
+        .navbar {
+            border-radius: 0;
+        }
+
+        .input-group-addon {
+            padding: 5px;
+            text-align: center;
+            background-color: #e0f3f2;
+            border-radius: 2px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            #opacity: 0.7;
+        }
+
+        .container-fluid {
+            height: 100px;
+            background-color: #038a86;
+            text-align: center;
+        }
+
+        .navbar {
+            height: 100px;
+            border-bottom: 100px
+        }
+
+        .form-group {
+            height: 90px;
+        }
+
+        .alignleft {
+            display: inline;
+            float: left;
+        }
+
+        .alignright {
+            display: inline;
+            float: right;
+        }
+
+        .textdiv {
+            position: relative;
+        }
+
+        .textdiv h3 {
+            position: absolute;
+            left: 100px;
+            top: -150%;
+            color: white;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-default" style="padding-bottom: 100px">
+    <img class="alignleft" src="/static/img/AI.png" alt="" width="100px" height="100px">
+    <img class="alignright" src="/static/img/heart.png" alt="" width="100px" height="100px">
+    <div class="container-fluid">
+
+        <h2 align="center" style="color:white;margin-top: 30px">An Artificial Intelligence-powered System to Predict
+            Survival
+            in Patients with Advanced Chronic Heart Failure and Renal Dysfunction </h2>
+
+    </div>
+
+</nav>
+
+
+<div class="container">
+    <img src="/static/img/brain1.png" alt="" width="60px" height="60px"
+         style="margin-top: 30px ; margin-bottom: 30px ; margin-left:100px ; margin-right: 50px">
+    <div class="textdiv" style="display: inline">
+        <img src="/static/img/nav.png" alt="" width="750px" height="60px"
+             style="margin-top: 30px ; margin-bottom: 30px ; margin-left:30px ; margin-right: 100px">
+        <h3>Enter the Information Below with Your Most Recent Values</h3>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-5">
+            <div class="left" style="">
+                <img class="center-block" src="/static/img/doctor.png" alt="" width="450" height="400">
+                <h4 class="text" style="margin: 50px 0px">
+                    This artificial Intelligence-powered system is designed to assess patients' future survival as well
+                    as important indicators affecting prognosis, which requires only a small number of easy-to-get
+                    clinical examination variables to complete the task.
+                </h4>
+                <h4 class="text">
+                    This tool could apply especially to patients with advanced chronic heart failure and renal
+                    dysfunction.
+                </h4>
+                <h5 class="text" style="margin: 50px 0px">
+                    LVEF: left ventricular ejection fraction. eGFR: glomerular filtration rate.
+                    MCHC: mean corpuscular hemoglobin concentration. CTnI: serum cardiac troponin I. SV: stroke volume.
+                    TBIL: serum total bilirubin. Cr: Serum creatinine.
+                    CKD stage: chronic kidney disease stage
+                </h5>
+            </div>
+        </div>
+
+
+        <div class="col-xs-7 container">
+            <div class="panel panel-default">
+                <div class="panel-body" style="background:#e0f3f2">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {% for field in form %}
+                            {% if field.label == "Indicated time point" %}
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label>{{ field.label }}</label>
+                                        {#                                    <div id={{ field.label }} style="font-size:10px;color:red" >{{ field.errors.0 }}&nbsp;</div>#}
+                                        {{ field }}
+                                        <span class="input-group-addon">day</span>
+
+                                        <div style="height: 50px">
+                                            <span style="font-size: 10px;color: red">{{ field.errors.0 }}&nbsp;</span>
+                                        </div>
+                                        {#                        <input type="text" class="form-control" placeholder="姓名" name="name"/>#}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label>{{ field.label }}</label>
+                                        {#                                    <div id={{ field.label }} style="font-size:10px;color:red" >{{ field.errors.0 }}&nbsp;</div>#}
+                                        {{ field }}
+                                        {% if  field.label  == "Age" %}
+                                            <span class="input-group-addon">year</span>
+                                        {% elif field.label  == "Cr" %}
+                                            <span class="input-group-addon">μmol/L</span>
+                                        {% elif field.label  == "LVEF" %}
+                                            <span class="input-group-addon">%</span>
+                                        {% elif field.label  == "eGFR" %}
+                                            <span class="input-group-addon">mL/(min/1.73 ㎡)</span>
+                                        {% elif field.label  == "Lymphocyte" %}
+                                            <span class="input-group-addon">%</span>
+                                        {% elif field.label  == "MCHC" %}
+                                            <span class="input-group-addon">g/L</span>
+                                        {% elif field.label  == "SV" %}
+                                            <span class="input-group-addon">mL</span>
+                                        {% elif field.label  == "CTnI" %}
+                                            <span class="input-group-addon">ng/ml</span>
+                                        {% elif field.label  == "TBIL" %}
+                                            <span class="input-group-addon">μmol/L</span>
+                                        {% else %}
+                                            <span class="input-group-addon">&nbsp;</span>
+                                        {% endif %}
+                                        <div style="height: 50px">
+                                            <span style="font-size: 10px;color: red">{{ field.errors.0 }}&nbsp;</span>
+                                        </div>
+                                        {#                        <input type="text" class="form-control" placeholder="姓名" name="name"/>#}
+                                    </div>
+                                </div>
+
+                            {% endif %}
+
+
+                        {% endfor %}
+                        <div class="col-xs-2">
+                            <img src="/static/img/brain2.png" alt="" width="100%" height="45px">
+                        </div>
+                        <div class="col-xs-10">
+                            <button width="90%" id="submit1" type="submit"
+                                    class="btn btn-primary btn-lg btn-block clearfix"
+                                    style="background:#009994">
+                                Submit
+                            </button>
+                            <h3 id="wait" hidden="hidden" style="color: #009994" align="center"> AI is coming！ Please
+                                wait！</h3>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<img src="/static/img/AIback.png" alt="" width="100%">
+{#<div>#}
+{#    <img src="/static/img/hospitallogo.png" alt="" width="10%">#}
+{#</div>#}
+{#<img src="/static/img/hospital11.jpg" alt="" width="100%" height="200px">#}
+<div>
+    <a herf="https//beian.miit.gov.cn" target="_blank">豫ICP备2023003651号</a>
+</div>
+
+<script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $("#submit1").click(function () {
+            $(this).hide(1000);
+            $("#wait").show(2500);
+        });
+    });
+</script>
+
+
+</body>
+</html>

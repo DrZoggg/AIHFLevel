@@ -1,0 +1,225 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hf-ai-survival</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <style>
+        .navbar {
+            border-radius: 0;
+        }
+
+        .input-group-addon {
+            padding: 5px;
+            text-align: center;
+            background-color: #e0f3f2;
+            border-radius: 2px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            #opacity: 0.7;
+        }
+
+        .container-fluid {
+            height: 100px;
+            background-color: #038a86;
+            text-align: center;
+        }
+
+        .navbar {
+            height: 100px;
+            border-bottom: 100px
+        }
+
+        .form-group {
+            height: 90px;
+        }
+
+        .alignleft {
+            display: inline;
+            float: left;
+        }
+
+        .alignright {
+            display: inline;
+            float: right;
+        }
+
+        .textdiv {
+            position: relative;
+        }
+
+        .textdiv h3 {
+            position: absolute;
+            left: 100px;
+            top: -150%;
+            color: white;
+        }
+
+        .line {
+            margin: 0 auto;
+            border-bottom: 2px solid #ccc;
+            margin-bottom: 50px;
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-default" style="padding-bottom: 100px">
+    <img class="alignleft" src="/static/img/AI.png" alt="" width="100px" height="100px">
+    <img class="alignright" src="/static/img/heart.png" alt="" width="100px" height="100px">
+    <div class="container-fluid">
+
+        <h2 align="center" style="color:white;margin-top: 30px">An Artificial Intelligence-powered System to Predict
+            Survival
+            in Patients with Advanced Chronic Heart Failure and Renal Dysfunction </h2>
+
+    </div>
+
+</nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="/static/img/heart2.png" alt=""
+                 style="height:60px;width:60px;margin-top: 30px ; margin-bottom: 30px ; margin-left:0px">
+            <div>
+                <h4>Three risk subgroups were prespecified</h4>
+            </div>
+            <div>
+                <h4>risk class 1: <0.435 points</h4>
+            </div>
+            <div>
+                <h4>risk class 2: 0.435-1.548 points</h4>
+            </div>
+            <div>
+                <h4>risk class 3: >1.548 points</h4>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <img src="/static/img/tree.png" alt=""
+                 style="height:100%;width:100%;margin-top: 0px ; margin-bottom: 30px ; margin-left:0px">
+        </div>
+
+        <div class="col-md-4">
+            <div><h4>&nbsp;</h4></div>
+            <div><h4>&nbsp; </h4></div>
+            <div>
+                {% if risk == "High risk" %}
+                    <h4><b>risk of all-cause mortality :</b></h4>
+                    <b style="color: red;font-size: 30px">{{ risk }}</b>
+                {% endif %}
+                {% if risk == "Intermidiate risk" %}
+                    <h4><b>risk of all-cause mortality :</b></h4>
+                    <b style="color: orange;font-size: 25px">{{ risk }}</b>
+                {% endif %}
+                {% if risk == "Low risk" %}
+                    <h4><b>risk of all-cause mortality :</b></h4>
+                    <b style="color: green;font-size: 18px">{{ risk }}</b>
+                {% endif %}
+            </div>
+            <div>
+                <h4><b>Survival Probability：</b></h4>
+            </div>
+            <div>
+                <h4>at half year: <b>{{ half }}</b></h4>
+            </div>
+            <div>
+                <h4>at 1 year: <b>{{ year1 }}</b></h4>
+            </div>
+            <div>
+                <h4>at 2 year: <b>{{ year2 }}</b></h4>
+            </div>
+            <div>
+                <h4>at 900 days: <b>{{ day900 }}</b></h4>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="line"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 container" style="margin-bottom: 30px">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" style="background:#009994">
+                Assess survival at specific time points following diagnosis
+            </button>
+        </div>
+        <div class="col-xs-6 container" style="margin-bottom: 30px">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" style="background:#009994">
+                The contribution of each index in each case
+            </button>
+        </div>
+        <div class="col-xs-6 container">
+            <div class="panel panel-default">
+                <div class="panel-body" style="background:#e0f3f2">
+                    <img src={{ filename3 }} alt=""
+                            {#                         style="height:250px ;width:320px;margin-left: 101px">#}
+                         style="height:250px ;width:61.76%;margin-left: 19.12%">
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-xs-6 container">
+            <div class="panel panel-default">
+                <div class="panel-body" style="background:#e0f3f2">
+                    <img src={{ filename1 }} alt=""
+                            {#                         style="height:250px ;width:54.88%;margin-left: 118px">#}
+                         style="height:250px ;width:54.88%;margin-left: 22.56%">
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-xs-6 container">
+            <div class="panel panel-default">
+                <div class="panel-body" style="background:#e0f3f2">
+                    <img src={{ filename4 }} alt=""
+                            {#                         style="height:250px ;width:323px;margin-left: 100px">#}
+                         style="height:250px ;width:61.76%;margin-left: 19.12%">
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-xs-6 container">
+            <div class="panel panel-default">
+                <div class="panel-body" style="background:#e0f3f2">
+                    <img src={{ filename2 }} alt=""
+                            {#                         style="height:250px ;width:235px;margin-left: 144px">#}
+                         style="height:250px ;width:44.93%;margin-left: 27.53%">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{#<div>#}
+{#    <img src="/static/img/hospitallogo.png" alt="" width="10%">#}
+{#</div>#}
+{#<img src="/static/img/hospital22.jpg" alt="" width="100%" height="200px">#}
+
+
+<img src="/static/img/AIback.png" alt="" width="100%">
+<div>
+    <a herf="https//beian.miit.gov.cn" target="_blank">豫ICP备2023003651号</a>
+</div>
+<script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+<script>
+
+</script>
+</body>
+</html>
