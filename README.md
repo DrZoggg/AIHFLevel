@@ -10,3 +10,8 @@
 If you use this research or code, please cite the associated peer-reviewed article:
 
 AI hybrid survival assessment for advanced heart failure patients with renal dysfunction. *Nature Communications* (2024). https://doi.org/10.1038/s41467-024-50415-9
+
+
+## Evidence and citation resources
+
+An [author-maintained evidence summary](https://drgezhang.com/papers/aihflevel.html) provides the study's key findings, evidence boundaries, and citation downloads. For formal academic citation, use the article DOI listed above.
