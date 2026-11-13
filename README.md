@@ -15,3 +15,8 @@ AI hybrid survival assessment for advanced heart failure patients with renal dys
 ## Evidence and citation resources
 
 An [author-maintained evidence summary](https://drgezhang.com/papers/aihflevel.html) provides the study's key findings, evidence boundaries, and citation downloads. For formal academic citation, use the article DOI listed above.
+
+For literature review and validation-study planning, use the [source-linked model comparison workspace](https://drgezhang.com/research/cardiovascular-prediction-evidence.html#model-evaluation-task-workspace). Record the population, prediction time, endpoint and horizon, model implementation, evaluation sample and updating status before comparing reported performance.
+
+- [Filled comparison worksheet (CSV)](https://drgezhang.com/research/cardiovascular-prediction-evidence.worksheet.csv)
+- [Blank comparison worksheet (CSV)](https://drgezhang.com/research/cardiovascular-prediction-evidence.blank.csv)
